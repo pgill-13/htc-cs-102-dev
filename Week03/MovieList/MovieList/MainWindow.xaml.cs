@@ -20,9 +20,31 @@ namespace MovieList
     /// </summary>
     public partial class MainWindow : Window
     {
+        List<Movie> Movies = new List<Movie>();
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void ShowButton_Click(object sender, RoutedEventArgs e)
+        {
+            foreach (Movie movie in Movies)
+            {
+                movie.MovieInfo();
+            }
+        }
+        private void AddButton_Click(object sender, RoutedEventArgs e)
+        {
+            string title = titleInput.Text;
+            int releaseYear = Convert.ToInt32(releaseYearInput.Text);
+
+            Movie movie = new Movie(title, releaseYear);
+            Movies.Add(movie);
+            MessageBox.Show("Movie was added");
         }
     }
 }
